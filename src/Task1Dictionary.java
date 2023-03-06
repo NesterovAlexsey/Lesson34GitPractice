@@ -37,6 +37,7 @@
 //Костыль: код, который нужен, чтобы исправить несовершенство ранее написанного кода
 //Бета: бета-версия, приложение на стадии публичного тестирования
 //////    3
+
 //Змея
 //Жаба
 //костыль
@@ -77,10 +78,7 @@ public class Task1Dictionary {
     return dictionary;
   }
 
-  public static void main(String[] args) throws IOException {
-    Map<String, String> dictionary = readDictionaryFromFile();
-
-    //read word for search and add it to List
+  public static List<String> readSearchWords () throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int n = Integer.parseInt(br.readLine());
     List<String> question = new ArrayList<>();
@@ -89,6 +87,14 @@ public class Task1Dictionary {
       String userQuestion = br.readLine().toLowerCase();
       question.add(userQuestion);
     }
+    return question;
+  }
+
+  public static void main(String[] args) throws IOException {
+
+    Map<String, String> dictionary = readDictionaryFromFile();
+    List<String> question = readSearchWords();
+
 
     //method for output data
     for (String q : question) {
