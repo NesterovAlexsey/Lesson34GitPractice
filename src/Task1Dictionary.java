@@ -45,10 +45,10 @@
 //Конфа: конференция
 //Костыль: код, который нужен, чтобы исправить несовершенство ранее написанного кода
 //Бета: бета-версия, приложение на стадии публичного тестирования
-//    3
-//    Змея
-//    Жаба
-//    костыль
+//////    3
+//Змея
+//Жаба
+//костыль
 
 //    Пример выходных данных
 //    язык программирования Python
@@ -76,7 +76,7 @@ public class Task1Dictionary {
 
       int position = line.indexOf(":"); // find position of colon
       String key = line.substring(0, position).toLowerCase(); // everything before column is key
-      String result = line.substring(position + 1); // all the next - value
+      String result = line.substring(position + 2); // all the next - value
 
       dictionary.put(key, result);
     }
@@ -90,7 +90,13 @@ public class Task1Dictionary {
       question.add(userQuestion);
     }
 
-    System.out.println(dictionary);
-    System.out.println(question);
+    //method for output data
+    for (String q : question) {
+      if (dictionary.containsKey(q)) {
+        System.out.println(dictionary.get(q));
+      } else {
+        System.out.println("Не найдено");
+      }
+    }
   }
 }
