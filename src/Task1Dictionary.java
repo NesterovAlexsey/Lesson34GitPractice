@@ -58,7 +58,7 @@ import java.util.Map;
 
 public class Task1Dictionary {
 
-  public static Map<String, String> readDictionaryFromFile () throws IOException {
+  public static Map<String, String> readDictionaryFromFile() throws IOException {
     BufferedReader read = new BufferedReader(new FileReader("res/dict.txt"));
     int num = Integer.parseInt(read.readLine());
     Map<String, String> dictionary = new HashMap<>();
@@ -78,7 +78,7 @@ public class Task1Dictionary {
     return dictionary;
   }
 
-  public static List<String> readSearchWords () throws IOException {
+  public static List<String> readSearchWords() throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int n = Integer.parseInt(br.readLine());
     List<String> question = new ArrayList<>();
@@ -90,13 +90,7 @@ public class Task1Dictionary {
     return question;
   }
 
-  public static void main(String[] args) throws IOException {
-
-    Map<String, String> dictionary = readDictionaryFromFile();
-    List<String> question = readSearchWords();
-
-
-    //method for output data
+  public static void printDefinitions(List<String> question, Map<String, String> dictionary) {
     for (String q : question) {
       if (dictionary.containsKey(q)) {
         System.out.println(dictionary.get(q));
@@ -105,4 +99,13 @@ public class Task1Dictionary {
       }
     }
   }
+
+  public static void main(String[] args) throws IOException {
+
+    Map<String, String> dictionary = readDictionaryFromFile();
+    List<String> question = readSearchWords();
+    printDefinitions(question, dictionary);
+
+  }
 }
+
