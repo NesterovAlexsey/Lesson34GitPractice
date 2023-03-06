@@ -40,11 +40,11 @@
 //
 //    Пример входных данных
 //    5
-//    Змея: язык программирования Python
-//    Баг: от англ. bug — жучок, клоп, ошибка в программе
-//    Конфа: конференция
-//    Костыль: код, который нужен, чтобы исправить несовершенство ранее написанного кода
-//    Бета: бета-версия, приложение на стадии публичного тестирования
+//Змея: язык программирования Python
+//Баг: от англ. bug — жучок, клоп, ошибка в программе
+//Конфа: конференция
+//Костыль: код, который нужен, чтобы исправить несовершенство ранее написанного кода
+//Бета: бета-версия, приложение на стадии публичного тестирования
 //    3
 //    Змея
 //    Жаба
@@ -55,8 +55,31 @@
 //    Не найдено
 //    код, который нужен, чтобы исправить несовершенство ранее написанного кода
 
-public class Task1Dictionary {
-  public static void main(String[] args) {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
+public class Task1Dictionary {
+  public static void main(String[] args) throws IOException {
+    BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+
+    //считать входные данные и добавить их в словарь
+    int num = Integer.parseInt(read.readLine());
+    Map<String, String> dictionary = new HashMap<>(); // create dictionary before start to read data
+
+    for (int i = 0; i < num; i++) { // check all line one by one
+      String line = read.readLine(); // read first line
+
+      int position = line.indexOf(":"); // find position of colon
+      String key = line.substring(0, position); // everything before column is key for dictionary
+      String result = line.substring(position + 1); // all the next - value
+
+      dictionary.put(key, result);
+    }
+
+    System.out.println(dictionary);
+    //считать запрос и вывести его на экран
   }
 }
