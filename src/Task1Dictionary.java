@@ -56,23 +56,29 @@ import java.util.List;
 import java.util.Map;
 
 public class Task1Dictionary {
-  public static void main(String[] args) throws IOException {
+
+  public static Map<String, String> readDictionaryFromFile () throws IOException {
     BufferedReader read = new BufferedReader(new FileReader("res/dict.txt"));
-
-    //read income data and add it to dictionary
     int num = Integer.parseInt(read.readLine());
-    Map<String, String> dictionary = new HashMap<>(); // create dictionary before start to read data
+    Map<String, String> dictionary = new HashMap<>();
 
-    for (int i = 0; i < num; ++i) { // check all line one by one
-      String line = read.readLine(); // read first line
+    for (int i = 0; i < num; ++i) {
+      String line = read.readLine();
 
-      int position = line.indexOf(":"); // find position of colon
-      String key = line.substring(0, position).toLowerCase(); // everything before column is key
-      String result = line.substring(position + 2); // all the next - value
+      int position = line.indexOf(":");
+      String key = line.substring(0, position).toLowerCase();
+      String result = line.substring(position + 2);
 
       dictionary.put(key, result);
     }
+
     read.close();
+
+    return dictionary;
+  }
+
+  public static void main(String[] args) throws IOException {
+    Map<String, String> dictionary = readDictionaryFromFile();
 
     //read word for search and add it to List
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
