@@ -1,17 +1,8 @@
-//условие в комментарии и никакого кода
-//решение без учёта файлов - чтение с клавиатуры и вывод на экран
+
 //добавляем файлы, если они указаны в задаче
 //разбиваем задачу на методы
 //добавляем try..catch
-//
-//  Задача 1
-//    Программисты, как вы уже знаете, постоянно учатся,
-//    а в общении между собой используют весьма специфический язык.
-//    Чтобы систематизировать ваш пополняющийся профессиональный лексикон, мы придумали эту задачу.
-//
-//    Напишите программу создания небольшого словаря сленговых программерских выражений,
-//    чтобы она потом по запросу возвращала значения из этого словаря.
-//
+
 //    Формат входных данных
 //    Файл dict.txt
 //    В первой строке задано одно целое число n — количество слов в словаре.
@@ -56,6 +47,7 @@
 //    код, который нужен, чтобы исправить несовершенство ранее написанного кода
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -65,7 +57,7 @@ import java.util.Map;
 
 public class Task1Dictionary {
   public static void main(String[] args) throws IOException {
-    BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+    BufferedReader read = new BufferedReader(new FileReader("res/dict.txt"));
 
     //read income data and add it to dictionary
     int num = Integer.parseInt(read.readLine());
@@ -80,13 +72,15 @@ public class Task1Dictionary {
 
       dictionary.put(key, result);
     }
+    read.close();
 
     //read word for search and add it to List
-    int n = Integer.parseInt(read.readLine());
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    int n = Integer.parseInt(br.readLine());
     List<String> question = new ArrayList<>();
 
     for (int i = 0; i < n; ++i) {
-      String userQuestion = read.readLine().toLowerCase();
+      String userQuestion = br.readLine().toLowerCase();
       question.add(userQuestion);
     }
 
